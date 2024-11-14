@@ -24,5 +24,7 @@ public class GoalService {
         return goalRepository.getReferenceById(id);
     }
 
+    /*만다라트id에 따른 목표 리스트 조회*/
     public Optional<List<Goal>> findByMandartId(long id) { return goalRepository.findByMandartId(id);}
+
 }

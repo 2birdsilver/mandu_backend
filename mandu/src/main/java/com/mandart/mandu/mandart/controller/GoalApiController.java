@@ -29,7 +29,7 @@ public class GoalApiController {
                 .body(goals);
     }
 
-    @GetMapping("/api/goal/{goalId}")
+    @GetMapping("/api/goal/{id}")
     public ResponseEntity<GoalResponse> findGoalById(@PathVariable long id) {
         Goal goal = goalService.findById(id);
 
@@ -38,8 +38,8 @@ public class GoalApiController {
     }
 
     @GetMapping("/api/goals/{mandartId}")
-    public ResponseEntity<List<GoalResponse>> findGoalsByMandartId(@PathVariable long id) {
-        List<GoalResponse> goals = goalService.findByMandartId(id)
+    public ResponseEntity<List<GoalResponse>> findGoalsByMandartId(@PathVariable long mandartId) {
+        List<GoalResponse> goals = goalService.findByMandartId(mandartId)
                 .orElse(Collections.emptyList())
                 .stream()
                 .map(GoalResponse::new)
