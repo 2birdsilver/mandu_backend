@@ -30,6 +30,17 @@ public class MandartService {
         return mandartRepository.findMandartsByUserId((userId));
     }
 
+    public int MandartCountByUserId(String userId) {
+        return mandartRepository.countByUserId(userId);
+    }
+
+    public long createMandart(String mandartName) {
+        int mandartCount = MandartCountByUserId("birdsilver");
+        Mandart mandart = Mandart.builder().name(mandartName).userId("birdsilver").build();
+        Mandart savedMandart = mandartRepository.save(mandart);
+        return savedMandart.getId();
+    }
+
 
 
 }

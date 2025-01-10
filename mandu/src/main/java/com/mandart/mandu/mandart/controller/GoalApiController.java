@@ -5,20 +5,20 @@ import com.mandart.mandu.mandart.dto.GoalResponse;
 import com.mandart.mandu.mandart.service.GoalService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @RestController
+@RequestMapping("/api")
 public class GoalApiController {
 
     private final GoalService goalService;
 
-    @GetMapping("/api/goals")
+    @GetMapping("/goals")
     public ResponseEntity<List<GoalResponse>> findAllGoals() {
         List<GoalResponse> goals = goalService.findAll()
                 .stream()
@@ -29,7 +29,7 @@ public class GoalApiController {
                 .body(goals);
     }
 
-    @GetMapping("/api/goal/{id}")
+    @GetMapping("/goal/{id}")
     public ResponseEntity<GoalResponse> findGoalById(@PathVariable long id) {
         Goal goal = goalService.findById(id);
 
@@ -37,7 +37,7 @@ public class GoalApiController {
                 .body(new GoalResponse(goal));
     }
 
-    @GetMapping("/api/goals/{mandartId}")
+    @GetMapping("/goals/{mandartId}")
     public ResponseEntity<List<GoalResponse>> findGoalsByMandartId(@PathVariable long mandartId) {
         List<GoalResponse> goals = goalService.findByMandartId(mandartId)
                 .orElse(Collections.emptyList())
@@ -47,5 +47,11 @@ public class GoalApiController {
 
         return ResponseEntity.ok()
                 .body(goals);
+    }
+
+    @PostMapping("/goal/update")
+    public long createMandart(@RequestBody Map<String, Object> goalName) {
+        System.out.println("goalName: " + goalName.get("goalName"));
+        return 0;
     }
 }

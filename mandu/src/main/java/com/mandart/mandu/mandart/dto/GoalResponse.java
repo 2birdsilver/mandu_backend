@@ -14,7 +14,7 @@ public class GoalResponse {
     private final long id;
     private final String name;
     private final long mandartId;
-    private List<Action> actions;
+    private List<Action> actionList;
 
     public GoalResponse(Goal goal) {
         this.id = goal.getId();

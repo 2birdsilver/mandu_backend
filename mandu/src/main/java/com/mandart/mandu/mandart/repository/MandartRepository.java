@@ -11,4 +11,5 @@ import java.util.Optional;
 @SpringBootApplication
 public interface MandartRepository extends JpaRepository<Mandart, Long> {
     Optional<List<Mandart>> findMandartsByUserId(String userId);
+    int countByUserId(String userId);
 }

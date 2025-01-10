@@ -5,16 +5,18 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Getter
 @Entity
 public class Goal {
     @Id
-    @Column(name = "id", updatable = false)
+    @Column(name = "goal_id", updatable = false)
     private Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "goal_name", nullable = false)
     private String name;
 
     @Column(name = "mandart_id", nullable = false)

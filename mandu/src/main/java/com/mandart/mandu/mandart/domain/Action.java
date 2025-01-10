@@ -14,11 +14,11 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Action {
     @Id
-    @Column(name = "id", updatable = false)
+    @Column(name = "action_id", updatable = false)
     private Long id;
 
-    @Column(name = "action", nullable = false)
-    private String action;
+    @Column(name = "action_name", nullable = false)
+    private String name;
 
     @Column(name = "goal_id", nullable = false)
     private Long goalId;

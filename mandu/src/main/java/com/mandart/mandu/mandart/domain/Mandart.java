@@ -2,6 +2,8 @@ package com.mandart.mandu.mandart.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Getter
@@ -9,18 +11,17 @@ import lombok.*;
 public class Mandart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", updatable = false)
+    @Column(name = "mandart_id", updatable = false, nullable = false)
     private Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "mandart_name", nullable = false)
     private String name;
 
     @Column(name = "user_id", nullable = false)
     private String userId;
 
     @Builder
-    public Mandart(long id, String name, String userId) {
-        this.id = id;
+    public Mandart(String name, String userId) {
         this.name = name;
         this.userId = userId;
     }
